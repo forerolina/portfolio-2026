@@ -1,24 +1,61 @@
 import './style.css';
 import { projects } from './projects.js';
 
-const listEl = document.getElementById('project-list');
+const PLACEHOLDER_IMAGE =
+  'https://placehold.co/400x450/2d3748/ffffff?text=Image+Error';
 
-if (listEl) {
-  listEl.innerHTML = '';
+const accordionEl = document.getElementById('project-accordion');
 
-  projects.forEach((project) => {
+if (accordionEl) {
+  let activeIndex = projects.length - 1;
+
+  accordionEl.innerHTML = '';
+
+  projects.forEach((project, index) => {
     const link = document.createElement('a');
     link.href = `/case-study.html?slug=${encodeURIComponent(project.slug)}`;
-    link.className = 'project-card';
+    link.className = 'accordion-item';
+    link.setAttribute('role', 'listitem');
+    link.setAttribute('aria-label', project.title);
 
     link.innerHTML = `
-      <h3 class="project-card-title">${escapeHtml(project.title)}</h3>
-      <p class="project-card-summary">${escapeHtml(project.summary)}</p>
-      <p class="project-card-year">${escapeHtml(project.year)}</p>
+      <img
+        class="accordion-item__image"
+        src="${escapeHtml(project.imageUrl)}"
+        alt=""
+        loading="lazy"
+      />
+      <span class="accordion-item__overlay" aria-hidden="true"></span>
+      <span class="accordion-item__label">${escapeHtml(project.title)}</span>
     `;
 
-    listEl.appendChild(link);
+    const img = link.querySelector('.accordion-item__image');
+    img.addEventListener('error', () => {
+      img.onerror = null;
+      img.src = PLACEHOLDER_IMAGE;
+    });
+
+    link.addEventListener('mouseenter', () => setActiveIndex(index));
+    link.addEventListener('focusin', () => setActiveIndex(index));
+
+    accordionEl.appendChild(link);
   });
+
+  setActiveIndex(activeIndex);
+
+  function setActiveIndex(index) {
+    activeIndex = index;
+    const items = accordionEl.querySelectorAll('.accordion-item');
+    items.forEach((item, i) => {
+      const isActive = i === activeIndex;
+      item.classList.toggle('is-active', isActive);
+      if (isActive) {
+        item.setAttribute('aria-current', 'true');
+      } else {
+        item.removeAttribute('aria-current');
+      }
+    });
+  }
 }
 
 function escapeHtml(text) {

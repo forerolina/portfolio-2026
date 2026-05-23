@@ -8,7 +8,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/style.css">
 </head>
-<body>
+<body class="page-home">
   <header class="site-header">
     <a href="/" class="logo" aria-label="Home">
       <span class="logo-slash">/</span> Lina Forero
@@ -19,19 +19,18 @@
     </nav>
   </header>
 
-  <main class="page-main">
-    <section class="hero">
-      <p class="hero-eyebrow">Product Designer</p>
-      <h1 class="hero-title">Lina Forero</h1>
-      <p class="hero-subtitle">
-        Senior Product Designer building thoughtful digital experiences.
-      </p>
-    </section>
-
-    <section class="work-section" aria-labelledby="work-heading">
-      <h2 id="work-heading" class="section-heading">Selected work</h2>
-      <div id="project-list" class="project-list">
-        <p class="project-list-fallback">Loading projects…</p>
+  <main class="page-main page-main--home">
+    <section class="landing" aria-label="Introduction">
+      <div class="landing__copy">
+        <p class="hero-eyebrow">Product Designer</p>
+        <h1 class="hero-title">Lina Forero</h1>
+        <p class="hero-subtitle">
+          Senior Product designer &amp; Conversational designer @eDreams
+        </p>
+        <a href="/about.html" class="landing-cta">Get in touch</a>
+      </div>
+      <div class="landing__accordion">
+        <div id="project-accordion" class="accordion" role="list" aria-label="Selected work"></div>
       </div>
     </section>
   </main>
