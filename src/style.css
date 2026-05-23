@@ -267,9 +267,10 @@ a:hover {
 .hero-eyebrow {
   margin: 0 0 var(--space-xs);
   font-size: 0.875rem;
-  color: var(--color-muted);
+  color: #8a8a8a;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  font-weight: 300;
 }
 
 .hero-title {
@@ -282,7 +283,7 @@ a:hover {
 .hero-subtitle {
   margin: 0;
   max-width: 36ch;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   font-weight: 300;
   color: #8a8a8a;
 }

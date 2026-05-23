@@ -1,19 +1,37 @@
-import './style.css';
 import { projects } from './projects.js';
+import { escapeHtml } from './lib/escape-html.js';
 
 const PLACEHOLDER_IMAGE =
   'https://placehold.co/400x450/2d3748/ffffff?text=Image+Error';
 
-const accordionEl = document.getElementById('project-accordion');
+export function renderHome(appEl) {
+  appEl.className = 'page-main page-main--home';
+  document.body.className = 'page-home';
 
-if (accordionEl) {
+  appEl.innerHTML = `
+    <section class="landing" aria-label="Introduction">
+      <div class="landing__copy">
+        <p class="hero-eyebrow">Product Designer</p>
+        <h1 class="hero-title">Lina Forero</h1>
+        <p class="hero-subtitle">
+          Senior Product designer &amp; Conversational designer @eDreams
+        </p>
+        <a href="/about" class="landing-cta">Get in touch</a>
+      </div>
+      <div class="landing__accordion">
+        <div id="project-accordion" class="accordion" role="list" aria-label="Selected work"></div>
+      </div>
+    </section>
+  `;
+
+  const accordionEl = document.getElementById('project-accordion');
+  if (!accordionEl) return;
+
   let activeIndex = projects.length - 1;
-
-  accordionEl.innerHTML = '';
 
   projects.forEach((project, index) => {
     const link = document.createElement('a');
-    link.href = `/case-study.html?slug=${encodeURIComponent(project.slug)}`;
+    link.href = `/case-study?slug=${encodeURIComponent(project.slug)}`;
     link.className = 'accordion-item';
     link.setAttribute('role', 'listitem');
     link.setAttribute('aria-label', project.title);
@@ -56,10 +74,4 @@ if (accordionEl) {
       }
     });
   }
-}
-
-function escapeHtml(text) {
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
 }

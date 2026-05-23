@@ -1,7 +1,7 @@
 export const projects = [
   {
     slug: 'conversational-booking',
-    title: 'Conversational Voice Assistant',
+    title: 'Voice Assistant',
     summary: 'Redesigning a flight booking flow for voice and chat assistants.',
     year: '2025',
     imageUrl:
