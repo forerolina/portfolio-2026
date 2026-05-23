@@ -1,7 +1,7 @@
 export const projects = [
   {
     slug: 'conversational-booking',
-    title: 'Conversational Booking',
+    title: 'Conversational Voice Assistant',
     summary: 'Redesigning a flight booking flow for voice and chat assistants.',
     year: '2025',
     imageUrl:
@@ -9,7 +9,7 @@ export const projects = [
   },
   {
     slug: 'design-system',
-    title: 'Design System',
+    title: 'Chatbot',
     summary: 'Scaling UI patterns and tokens across product teams.',
     year: '2024',
     imageUrl:
@@ -17,7 +17,7 @@ export const projects = [
   },
   {
     slug: 'mobile-checkout',
-    title: 'Mobile Checkout',
+    title: 'Appointment scheduling',
     summary: 'Simplifying payment steps to reduce drop-off on mobile.',
     year: '2024',
     imageUrl:
