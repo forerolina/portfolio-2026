@@ -162,14 +162,12 @@ function splitMetadata(metadata, alignLabel) {
 function renderHeroImage(heroImage) {
   return `
     <figure class="case-study-hero__visual" aria-hidden="true">
-      <div class="case-study-hero__image-card">
-        <img
-          class="case-study-hero__image"
-          src="${escapeHtml(heroImage.src)}"
-          alt="${escapeHtml(heroImage.alt ?? '')}"
-          loading="lazy"
-        />
-      </div>
+      <img
+        class="case-study-hero__image"
+        src="${escapeHtml(heroImage.src)}"
+        alt="${escapeHtml(heroImage.alt ?? '')}"
+        loading="lazy"
+      />
     </figure>
   `;
 }
