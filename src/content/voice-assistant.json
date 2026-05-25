@@ -1,0 +1,791 @@
+{
+  "title": "From IVR to Conversational AI: Designing a Voice Agent That Works for Everyone",
+  "subtitle": "A case study in conversational design, personality-driven dialogue, and human-centered automation.",
+  "metadata": [
+    {
+      "label": "Problem to solve",
+      "content": [
+        {
+          "type": "text",
+          "value": "eDreams Odigeo's voice support suffered from a fundamental design flaw: the IVR was obstructive. Customers called in with complex issues and it was hard to fit them into the traditional IVR system, which forced them into rigid menu trees. The gap between system and customer mental model was creating friction, frustration and high transfer rates."
+        }
+      ]
+    },
+    {
+      "label": "Main Impact",
+      "content": [
+        {
+          "type": "strong",
+          "value": "By May 2026"
+        },
+        {
+          "type": "text",
+          "value": " (5 months post-MVP launch), across 12.5k tracked calls:"
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "strong",
+          "value": "Transfer Rate (Overall)"
+        },
+        {
+          "type": "text",
+          "value": ": 16.9% → 15.4% (↓ 8.9%)"
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "strong",
+          "value": "Authentication Rate"
+        },
+        {
+          "type": "text",
+          "value": ": 33.1% → 55% (↑ 65.8%)"
+        }
+      ]
+    },
+    {
+      "label": "Timeline",
+      "value": "March 2025 – May 2026 (13 months, MVP to scale)"
+    }
+    
+  ],
+  "heroImage": {
+    "src": "/case-studies/voice-assistant/review.jpeg",
+    "alt": "",
+    "alignWithLabel": "Main Impact"
+  },
+  "sections": [
+    {
+      "title": "Problem to Solve",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "value": "eDreams Odigeo's voice support suffered from a fundamental design flaw: the IVR was obstructive."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "value": "Customers called in with complex issues and it was hard to fit them into the traditional IVR system, which forced them into rigid menu trees. The gap between system and customer mental model was creating friction, frustration and high transfer rates."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "type": "strong",
+                "value": "Transfer rates at 18%"
+              },
+              {
+                "type": "text",
+                "value": " meant customers were bouncing between agents who had no context about why they'd been transferred"
+              }
+            ],
+            [
+              {
+                "type": "strong",
+                "value": "Security questions alone consumed 90 seconds per call"
+              },
+              {
+                "type": "text",
+                "value": ", adding 15% to average handle time"
+              }
+            ],
+            [
+              {
+                "type": "strong",
+                "value": "FAQ-resolvable inquiries (26% of call volume)"
+              },
+              {
+                "type": "text",
+                "value": " were being escalated to human agents at €15+ per contact"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "value": "The real problem wasn't automation. It was that the system treated customer support as a routing problem, not a "
+            },
+            {
+              "type": "em",
+              "value": "conversation"
+            },
+            {
+              "type": "text",
+              "value": ". And it left agents to start from scratch on every transfer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Project Brief",
+      "blocks": [
+        {
+          "type": "labeled",
+          "label": [
+            {
+              "type": "strong",
+              "value": "Vision:"
+            }
+          ],
+          "content": [
+            {
+              "type": "text",
+              "value": "Enable customers to resolve their travel booking questions through natural conversation with an AI agent, without feeling they've lost control or context."
+            }
+          ]
+        },
+        {
+          "type": "labeled",
+          "label": [
+            {
+              "type": "strong",
+              "value": "Design focus:"
+            }
+          ],
+          "content": [
+            {
+              "type": "text",
+              "value": "Don't automate conversations for automation's sake. Design conversations that make human handoffs seamless and give agents the context they need to actually help."
+            }
+          ]
+        },
+        {
+          "type": "labeled",
+          "label": [
+            {
+              "type": "strong",
+              "value": "Key Constraints:"
+            }
+          ],
+          "list": [
+            [
+              {
+                "type": "text",
+                "value": "Multi-language complexity (different linguistic patterns, cultural tone expectations)"
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "value": "High-stakes domain (customers have emotional, financial investment in their bookings)"
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "value": "Need to prevent hallucinations (especially around refunds and membership promises)"
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "value": "Coexistence with human agents (handoff experience matters as much as automation)"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Design: Three Fundamental Shifts",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "value": "Moving from an IVR to a conversational AI system required rethinking how we approach dialogue design. We grounded our work in three core mental shifts:"
+            }
+          ]
+        }
+      ],
+      "subsections": [
+        {
+          "label": [
+            {
+              "type": "strong",
+              "value": "From Screens to Scripts"
+            }
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "Traditional UX design works in space (pixels, layout, visual hierarchy). Conversational design works in time (turns, pacing, sequence)."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "We stopped thinking about what the customer "
+                },
+                {
+                  "type": "em",
+                  "value": "sees"
+                },
+                {
+                  "type": "text",
+                  "value": " and started thinking about what gets "
+                },
+                {
+                  "type": "em",
+                  "value": "said"
+                },
+                {
+                  "type": "text",
+                  "value": ", and when. This meant:"
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "type": "text",
+                    "value": "Every bot response had to earn its place in the dialogue"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "value": "Greeting, turn-taking, and closure became design decisions"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "value": "Error messages couldn't just be \"Error: Authentication Failed.\" They needed to feel like part of the conversation"
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "The core artifact shifted from wireframes to conversation scripts, where every line carries intention."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": [
+            {
+              "type": "strong",
+              "value": "From User Flows to Conversation Arcs"
+            }
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "A user flow is spatial: start node → decision → endpoint. A conversation arc is temporal and emotional: it has a beginning, middle, and resolution."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "We mapped four building blocks into each conversation:"
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "type": "strong",
+                    "value": "Persona"
+                  },
+                  {
+                    "type": "text",
+                    "value": ": Who is speaking? What's their tone? (This shapes every single response.)"
+                  }
+                ],
+                [
+                  {
+                    "type": "strong",
+                    "value": "Turn-taking"
+                  },
+                  {
+                    "type": "text",
+                    "value": ": Who speaks when? How do we avoid the bot dominating?"
+                  }
+                ],
+                [
+                  {
+                    "type": "strong",
+                    "value": "Context memory"
+                  },
+                  {
+                    "type": "text",
+                    "value": ": What information is being carried forward through the conversation? (Booking details, customer status, intent, authentication level)"
+                  }
+                ],
+                [
+                  {
+                    "type": "strong",
+                    "value": "Cognitive load"
+                  },
+                  {
+                    "type": "text",
+                    "value": ": How much is the customer processing at each moment?"
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "This meant designing not just "
+                },
+                {
+                  "type": "em",
+                  "value": "what"
+                },
+                {
+                  "type": "text",
+                  "value": " the bot says, but the rhythm of the conversation and what the customer can reasonably handle at each stage."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": [
+            {
+              "type": "strong",
+              "value": "From UI States to Dialogue States"
+            }
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "In UI design, you design states: loading, error, success, empty. In conversational design, dialogue states are more nuanced because repair is built into conversation itself."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "We designed three primary recovery patterns:"
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "type": "strong",
+                    "value": "Acknowledge and Pivot"
+                  },
+                  {
+                    "type": "text",
+                    "value": " — When the bot doesn't understand, it names what it heard and offers a clarifying path (\"I'm hearing you want to change your flight date—is that right?\")"
+                  }
+                ],
+                [
+                  {
+                    "type": "strong",
+                    "value": "Gradual Escalation"
+                  },
+                  {
+                    "type": "text",
+                    "value": " — If simple clarification fails, offer structured options rather than asking for free-form input again"
+                  }
+                ],
+                [
+                  {
+                    "type": "strong",
+                    "value": "Warm Handoff"
+                  },
+                  {
+                    "type": "text",
+                    "value": " — If the bot can't resolve it, explain why and hand off with all context the agent needs"
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "No dialogue state was treated as a \"failure state.\" Every repair was part of the conversation design."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": [
+            {
+              "type": "strong",
+              "value": "Specialization Over Generality"
+            }
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "Instead of building one omniscient agent, we created focused agents for specific intents:"
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "items": [
+                [
+                  {
+                    "type": "text",
+                    "value": "Booking status queries"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "value": "Refund inquiries"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "value": "Voluntary changes & cancellations"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "value": "Baggage allowance"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "value": "FAQ deflection"
+                  }
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "Each agent had only the tools and knowledge it needed. Specialization dramatically reduced hallucinations (zero in our internal system vs. 3.5% in the vendor system)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": [
+            {
+              "type": "strong",
+              "value": "Context Passing, Not Just Call Routing"
+            }
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "The most critical design decision: the bot doesn't just transfer customers to agents. Before handoff, it builds a detailed context summary: what was asked, what authentication succeeded, booking information, what was already tried; and sends it to the agent's queue."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "When a human picks up, they know exactly where the conversation left off. No restart. No repeated questions. The dialogue simply continues, with a human taking over where the bot couldn't go further."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Results",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "strong",
+              "value": "By May 2026"
+            },
+            {
+              "type": "text",
+              "value": " (5 months post-MVP launch), across 12.5k tracked calls:"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            [
+              {
+                "type": "text",
+                "value": "Metric"
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "value": "Before"
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "value": "After"
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "value": "Improvement"
+              }
+            ]
+          ],
+          "rows": [
+            [
+              [
+                {
+                  "type": "strong",
+                  "value": "Transfer Rate (Overall)"
+                }
+              ],
+              [
+                {
+                  "type": "text",
+                  "value": "16.9%"
+                }
+              ],
+              [
+                {
+                  "type": "text",
+                  "value": "15.4%"
+                }
+              ],
+              [
+                {
+                  "type": "text",
+                  "value": "↓ 8.9%"
+                }
+              ]
+            ],
+            [
+              [
+                {
+                  "type": "strong",
+                  "value": "Authentication Rate"
+                }
+              ],
+              [
+                {
+                  "type": "text",
+                  "value": "33.1%"
+                }
+              ],
+              [
+                {
+                  "type": "text",
+                  "value": "55%"
+                }
+              ],
+              [
+                {
+                  "type": "text",
+                  "value": "↑ 65.8%"
+                }
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "labeled",
+          "label": [
+            {
+              "type": "strong",
+              "value": "User Experience:"
+            }
+          ],
+          "list": [
+            [
+              {
+                "type": "text",
+                "value": "Average conversation duration: 1min 24sec (intent recognition + resolution)"
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "value": "Intent classification accuracy: 72–100% by language (EN leading)"
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "value": "Customers completed 6.6% of complex queries autonomously (early booking confirmation agent)"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Insights",
+      "subsections": [
+        {
+          "label": [
+            {
+              "type": "strong",
+              "value": "Tone is Architecture"
+            }
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "Personality isn't the last thing you add before ship, it's a structural design decision. It shapes which information you gather first, how you phrase questions, how you handle errors, and what the customer feels throughout. Different personas should have measurably different conversation flows and different success metrics."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": [
+            {
+              "type": "strong",
+              "value": "Handoff Design Matters as Much as Automation"
+            }
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "The real value wasn't \"bots handling everything.\" It was bots preparing the ground so that when a human stepped in, they could actually help—not restart."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "Design for the agent as much as the customer. Dialogue systems should be passing context, not just transferring calls."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": [
+            {
+              "type": "strong",
+              "value": "Specialization Reduces Hallucinations"
+            }
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "A single \"general\" agent trying to handle refunds, bookings, and baggage is a hallucination waiting to happen. Focused agents with narrow scope outperform. This is a design principle, not just an engineering one."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": [
+            {
+              "type": "strong",
+              "value": "Temporal Design Requires Different Skills"
+            }
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "Designing for voice/chat is categorically different from screen design. Pixels give you space to show options. Dialogue gives you time to build them in turns. Scripts, emotional arcs, and dialogue states become your core design artifacts, not wireframes."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": [
+            {
+              "type": "strong",
+              "value": "Test the Repair Paths, Not Just the Happy Path"
+            }
+          ],
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "value": "The best conversational experiences fail gracefully. What happens when the bot is confused? When the user says something unexpected? When the system can't authenticate? The repair paths are where personality either holds together or breaks down."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

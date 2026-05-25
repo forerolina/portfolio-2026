@@ -1,4 +1,4 @@
-import { projects } from './projects.js';
+import { projects, getProjectPath } from './projects.js';
 import { escapeHtml } from './lib/escape-html.js';
 
 const PLACEHOLDER_IMAGE =
@@ -31,7 +31,7 @@ export function renderHome(appEl) {
 
   projects.forEach((project, index) => {
     const link = document.createElement('a');
-    link.href = `/case-study?slug=${encodeURIComponent(project.slug)}`;
+    link.href = getProjectPath(project);
     link.className = 'accordion-item';
     link.setAttribute('role', 'listitem');
     link.setAttribute('aria-label', project.title);

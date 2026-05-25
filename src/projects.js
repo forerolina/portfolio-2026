@@ -1,6 +1,6 @@
 export const projects = [
   {
-    slug: 'conversational-booking',
+    slug: 'voice-assistant',
     title: 'Voice Assistant',
     summary: 'Redesigning a flight booking flow for voice and chat assistants.',
     year: '2025',
@@ -27,4 +27,14 @@ export const projects = [
 
 export function getProject(slug) {
   return projects.find((p) => p.slug === slug) ?? null;
+}
+
+export function getProjectByPath(pathname) {
+  const path = pathname.replace(/^\/+|\/+$/g, '');
+  if (!path) return null;
+  return projects.find((p) => p.slug === path) ?? null;
+}
+
+export function getProjectPath(project) {
+  return `/${project.slug}`;
 }

@@ -1,3 +1,5 @@
 /about.html    /about    301
-/case-study.html    /case-study    301
+/case-study.html    /voice-assistant    301
+/case-study?slug=conversational-booking    /voice-assistant    301
+/case-study?slug=voice-assistant    /voice-assistant    301
 /*    /index.html   200

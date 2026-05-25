@@ -26,9 +26,10 @@ Output is in `dist/`.
 |------|------|
 | `/` | Home (project accordion) |
 | `/about` | About |
-| `/case-study?slug=…` | Case study |
+| `/voice-assistant` | Voice Assistant case study |
+| `/design-system`, `/mobile-checkout`, … | Other case studies (by project slug) |
 
-Legacy URLs (`/about.html`, `/case-study.html`) redirect to the routes above.
+Legacy URLs (`/about.html`, `/case-study.html`, `/case-study?slug=…`) redirect to the routes above.
 
 ## Deploy
 
