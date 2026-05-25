@@ -981,6 +981,7 @@ a.landing-cta--secondary:hover {
 }
 
 .case-study-contact__icon {
+  position: relative;
   display: flex;
   color: var(--color-muted);
   text-decoration: none;
@@ -988,6 +989,31 @@ a.landing-cta--secondary:hover {
 
 .case-study-contact__icon:hover {
   color: var(--color-text);
+}
+
+.case-study-contact__tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.375rem 0.625rem;
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+  white-space: nowrap;
+  border-radius: 0.25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+.case-study-contact__icon:hover .case-study-contact__tooltip,
+.case-study-contact__icon:focus-visible .case-study-contact__tooltip {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Coming soon fallback */
