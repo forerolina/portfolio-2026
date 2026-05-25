@@ -14,7 +14,7 @@ export function renderHome(appEl) {
         <p class="hero-eyebrow">Product Designer</p>
         <h1 class="hero-title">Lina Forero</h1>
         <p class="hero-subtitle">
-          Senior Product designer &amp; Conversational designer @eDreams
+          Senior Product designer &amp; Conversational designer @eDreamsOdigeo
         </p>
         <a href="/about" class="landing-cta">Get in touch</a>
       </div>
