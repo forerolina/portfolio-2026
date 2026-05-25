@@ -241,11 +241,43 @@ function renderSection(section) {
 }
 
 function renderSubsection(subsection) {
+  const videoHtml = subsection.video ? renderSubsectionVideo(subsection.video) : '';
+  const imageHtml = subsection.image ? renderSubsectionImage(subsection.image) : '';
+
   return `
+    ${videoHtml}
     <div class="case-study-subsection">
       <h3 class="case-study-subsection__label">${renderLabel(subsection.label)}</h3>
       ${renderSubsectionContent(subsection)}
     </div>
+    ${imageHtml}
+  `;
+}
+
+function renderSubsectionVideo(video) {
+  return `
+    <div class="case-study-video">
+      <video
+        class="case-study-video__player"
+        src="${escapeHtml(video.src)}"
+        controls
+        playsinline
+        preload="metadata"
+      ></video>
+    </div>
+  `;
+}
+
+function renderSubsectionImage(image) {
+  return `
+    <figure class="case-study-subsection-image" aria-hidden="${image.alt ? 'false' : 'true'}">
+      <img
+        class="case-study-subsection-image__img"
+        src="${escapeHtml(image.src)}"
+        alt="${escapeHtml(image.alt ?? '')}"
+        loading="lazy"
+      />
+    </figure>
   `;
 }
 

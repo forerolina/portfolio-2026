@@ -390,6 +390,9 @@
               "value": "From UI States to Dialogue States"
             }
           ],
+          "video": {
+            "src": "/case-studies/voice-assistant/demo.mp4"
+          },
           "blocks": [
             {
               "type": "paragraph",
@@ -544,7 +547,11 @@
                 }
               ]
             }
-          ]
+          ],
+          "image": {
+            "src": "/case-studies/voice-assistant/ai-summary.jpeg",
+            "alt": ""
+          }
         }
       ]
     },
